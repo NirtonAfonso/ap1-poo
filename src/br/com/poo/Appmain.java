@@ -1,6 +1,7 @@
 package br.com.poo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import br.com.poo.modelo.Data;
@@ -30,5 +31,12 @@ public class Appmain {
 				new Hora(19, 00),
 				"Pastor ezequiel",
 				new Local ("Plataforma Zoom", 20)));
+		
+		for(Evento evento : listaEventos) {
+			System.out.println(evento.toString() + "\n");
+		}
+			
 	}
+	
+	
 }
