@@ -24,6 +24,11 @@ public class Hora {
 	public void setMinuto(int minuto) {
 		this.minuto = minuto;
 	}
+	
+	@Override
+	public String toString() {
+		return String.valueOf(this.getHora() + ":" + this.getMinuto());
+	}
 
 }
 

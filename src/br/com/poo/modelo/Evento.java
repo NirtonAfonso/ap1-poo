@@ -82,4 +82,10 @@ public class Evento {
 		this.ingresso = ingresso;
 	}
 
+	@Override
+	public String toString() {
+		return String.valueOf(this.getNome() + " " + this.getData() + "-" + this.getHora() + "\n" + this.getLocal()
+				+ "\n" + this.getArtista());
+	}
+
 }

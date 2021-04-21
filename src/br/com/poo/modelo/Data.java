@@ -40,5 +40,10 @@ public class Data {
 			this.ano = ano;
 		} else System.out.println("Ano Inválido");
 	}
+	
+	@Override
+	public String toString() {
+		return String.valueOf(this.getDia() + "/" + this.getMes() + "/" + this.getAno());
+	}
 
 }

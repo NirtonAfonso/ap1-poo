@@ -24,6 +24,11 @@ public class Local {
 		CapacidadePessoas = capacidadePessoas;
 	}
 	
+	@Override
+	public String toString() {
+		return String.valueOf(this.getEndereco() + " - Capacidade total: " + this.getCapacidadePessoas());
+	}
+	
 	
 
 }
