@@ -16,9 +16,10 @@ public class Data {
 	}
 
 	public void setDia(int dia) {
-		if(dia>0 && dia<32) {
+		if (dia > 0 && dia < 32) {
 			this.dia = dia;
-		} else System.out.println("Dia inválido");
+		} else
+			System.out.println("Dia inválido");
 	}
 
 	public int getMes() {
@@ -26,9 +27,10 @@ public class Data {
 	}
 
 	public void setMes(int mes) {
-		if(mes>0 && mes<=12) {
+		if (mes > 0 && mes <= 12) {
 			this.mes = mes;
-		} else System.out.println("Mês Inválido"); 
+		} else
+			System.out.println("Mês Inválido");
 	}
 
 	public int getAno() {
@@ -36,14 +38,22 @@ public class Data {
 	}
 
 	public void setAno(int ano) {
-		if(ano > 0) {
+		if (ano > 0) {
 			this.ano = ano;
-		} else System.out.println("Ano Inválido");
+		} else
+			System.out.println("Ano Inválido");
 	}
-	
+
 	@Override
 	public String toString() {
-		return String.valueOf(this.getDia() + "/" + this.getMes() + "/" + this.getAno());
+		StringBuilder data = new StringBuilder();
+		data.append(getDia());
+		data.append("/");
+		data.append(getMes());
+		data.append("/");
+		data.append(getAno());
+
+		return data.toString();
 	}
 
 }
