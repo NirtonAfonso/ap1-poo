@@ -84,8 +84,20 @@ public class Evento {
 
 	@Override
 	public String toString() {
-		return String.valueOf(this.getNome() + " " + this.getData() + "-" + this.getHora() + "\n" + this.getLocal()
-				+ "\n" + this.getArtista());
+		StringBuilder evento = new StringBuilder();
+		evento.append(getNome());
+		evento.append("\n\t");
+		evento.append(getArtista());
+		evento.append("\n");
+		evento.append(getData());
+		evento.append("\n\t");
+		evento.append(getHora());
+		evento.append("\n");
+		evento.append(getLocal());
+		evento.append("\n");
+		evento.append(getIngresso());
+
+		return evento.toString();
 	}
 
 }

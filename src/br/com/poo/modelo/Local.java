@@ -3,15 +3,16 @@ package br.com.poo.modelo;
 public class Local {
 	private String endereco;
 	private int CapacidadePessoas;
-	
-	public Local (String endereco, int capacidadePessoas) {
+
+	public Local(String endereco, int capacidadePessoas) {
 		setEndereco(endereco);
 		setCapacidadePessoas(capacidadePessoas);
 	}
-	
+
 	public String getEndereco() {
 		return endereco;
 	}
+
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
@@ -23,12 +24,18 @@ public class Local {
 	public void setCapacidadePessoas(int capacidadePessoas) {
 		CapacidadePessoas = capacidadePessoas;
 	}
-	
+
 	@Override
 	public String toString() {
-		return String.valueOf(this.getEndereco() + " - Capacidade total: " + this.getCapacidadePessoas());
+		StringBuilder local = new StringBuilder();
+		local.append("Local do evento: ");
+		local.append(getEndereco());
+		local.append("\n");
+		local.append("Lotação Máxima: ");
+		local.append(getCapacidadePessoas());
+		local.append(" pessoas");
+
+		return local.toString();
 	}
-	
-	
 
 }

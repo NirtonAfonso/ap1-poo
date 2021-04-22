@@ -18,4 +18,17 @@ public class Ingresso {
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder ingresso = new StringBuilder();
+		ingresso.append("R$ ");
+		ingresso.append(getValor());
+		ingresso.append("\t");
+		ingresso.append("Quantidade á venda: ");
+		ingresso.append(getContIngressos());
+	
+		return ingresso.toString();
+	}
+	
 }

@@ -24,11 +24,16 @@ public class Hora {
 	public void setMinuto(int minuto) {
 		this.minuto = minuto;
 	}
-	
+
 	@Override
 	public String toString() {
-		return String.valueOf(this.getHora() + ":" + this.getMinuto());
+		StringBuilder hora = new StringBuilder();
+		hora.append("Às ");
+		hora.append(getHora());
+		hora.append(":");
+		hora.append(getMinuto());
+		hora.append("H");
+		return hora.toString();
 	}
 
 }
-
