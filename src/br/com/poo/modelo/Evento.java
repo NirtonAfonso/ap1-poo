@@ -25,8 +25,8 @@ public class Evento {
 	// metodo que testa a quantidade de ingressos com a capacidade para saber se
 	// ainda tem lugar disponível
 	public double ComprarIngresso(int n) {
-		if (local.getCapacidadePessoas() > ingresso.getContIngressos()) {
-			ingresso.ingressoComprado();
+		if (ingresso.getContIngressos()> 0) {
+			ingresso.ingressoComprado(n);
 			return ingresso.getValor() * n; // "n" é o numero de ingressos que o cliente quer, o metodo retorna o valor
 											// total da compra
 		} else
@@ -77,9 +77,9 @@ public class Evento {
 	public Ingresso getIngresso() {
 		return ingresso;
 	}
-
-	public void setIngresso(Ingresso ingresso) {
-		this.ingresso = ingresso;
+	//o ingresso recebe o valor e a capacidade, a quantidade de ingressos será de acordo à capacidade do evento.
+	public void setIngresso(double valor) {
+		ingresso = new Ingresso(valor, local.getCapacidadePessoas());
 	}
 
 	@Override
