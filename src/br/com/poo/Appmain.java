@@ -30,7 +30,7 @@ public class Appmain {
 				new Data(25, 4, 2021),
 				new Hora(19, 00),
 				"Pastor ezequiel",
-				new Local ("Plataforma Zoom", 20)));
+				new Local ("Plataforma Zoom ou discord", 20)));
 		
 		for(Evento evento : listaEventos) {
 			System.out.println(evento.toString() + "\n");
