@@ -114,5 +114,5 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnButton;
     private javax.swing.JLabel lblText;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration//GEN-END:variables 
 }
