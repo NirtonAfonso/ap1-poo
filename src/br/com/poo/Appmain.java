@@ -23,14 +23,14 @@ public class Appmain {
 		listaEventos.add(new Evento("Salvador fest",
 							new Data(12, 8, 2022),
 							new Hora(16, 00),
-							"Igor kanário",
-							new Local ("Parque de exposições", 500)));
+							"Igor kanï¿½rio",
+							new Local ("Parque de exposiï¿½ï¿½es", 500)));
 		
 		listaEventos.add(new Evento("Culto online",
 				new Data(25, 4, 2021),
 				new Hora(19, 00),
 				"Pastor ezequiel",
-				new Local ("Plataforma Zoom ou discord", 20)));
+				new Local ("Plataforma Zoom", 20)));
 		
 		for(Evento evento : listaEventos) {
 			System.out.println(evento.toString() + "\n");
