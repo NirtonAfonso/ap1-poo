@@ -23,8 +23,8 @@ public class Appmain {
 		listaEventos.add(new Evento("Salvador fest",
 							new Data(12, 8, 2022),
 							new Hora(16, 00),
-							"Igor kanário",
-							new Local ("Parque de exposições", 500)));
+							"Igor kanÃ¡rio",
+							new Local ("Parque de exposiÃ§Ãµes", 500)));
 		
 		listaEventos.add(new Evento("Culto online",
 				new Data(25, 4, 2021),
