@@ -2,10 +2,19 @@ package br.com.poo.modelo;
 
 public class Ingresso {
 	private double valor;
-	private int contIngressos = 0;
+	private int contIngressos;
 	
-	public void ingressoComprado() {
-		contIngressos++;
+	public Ingresso (double valor, int contIngressos) {
+		setValor(valor);
+		setContIngressos(contIngressos);
+	}
+	
+	public void setContIngressos(int contIngressos) {
+		this.contIngressos = contIngressos;
+	}
+	// total de ingresso é igual a capacidade, a cada ingresso comprado menos um terá no estoque
+	public void ingressoComprado(int quantidade) {
+		contIngressos-= quantidade;
 	}
 	
 	public int getContIngressos() {
@@ -15,7 +24,7 @@ public class Ingresso {
 	public double getValor() {
 		return valor;
 	}
-	public void setValor(float valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 	
