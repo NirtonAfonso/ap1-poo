@@ -24,7 +24,7 @@ public class Appmain {
 							new Data(12, 8, 2022),
 							new Hora(16, 00),
 							"Igor kan�rio",
-							new Local ("Parque de exposi��es", 500)));
+							new Local ("Parque de exposições", 500)));
 		
 		listaEventos.add(new Evento("Culto online",
 				new Data(25, 4, 2021),
