@@ -29,10 +29,7 @@ public class Appmain {
 				new Local("Plataforma Zoom", 20)));
 		listaEventos.get(2).setIngresso(2);
 		do {
-			System.out.println("Lista de Eventos");
-			for (Evento evento : listaEventos) {
-				System.out.println(evento.toString() + "\n");
-			}
+			Menu(listaEventos);
 			System.out.println();
 			System.out.println("Escolha o evento");
 			menu = scan.nextInt();
