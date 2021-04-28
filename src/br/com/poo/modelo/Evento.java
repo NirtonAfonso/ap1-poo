@@ -27,6 +27,7 @@ public class Evento {
 	public double ComprarIngresso(int n) {
 		if (ingresso.getContIngressos()> 0) {
 			ingresso.ingressoComprado(n);
+			System.out.println("Ingresso Comprado!");
 			return ingresso.getValor() * n; // "n" é o numero de ingressos que o cliente quer, o metodo retorna o valor
 											// total da compra
 		} else
