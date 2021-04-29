@@ -31,7 +31,7 @@ public class Local {
 		local.append("Local do evento: ");
 		local.append(getEndereco());
 		local.append("\n");
-		local.append("Lotação Máxima: ");
+		local.append("Lotacao Maxima: ");
 		local.append(getCapacidadePessoas());
 		local.append(" pessoas");
 
