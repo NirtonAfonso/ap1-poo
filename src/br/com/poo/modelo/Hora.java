@@ -28,7 +28,7 @@ public class Hora {
 	@Override
 	public String toString() {
 		StringBuilder hora = new StringBuilder();
-		hora.append("Às ");
+		hora.append("as ");
 		hora.append(getHora());
 		hora.append(":");
 		hora.append(getMinuto());
