@@ -19,7 +19,7 @@ public class Data {
 		if (dia > 0 && dia < 32) {
 			this.dia = dia;
 		} else
-			System.out.println("Dia inválido");
+			System.out.println("Dia invalido");
 	}
 
 	public int getMes() {
@@ -30,7 +30,7 @@ public class Data {
 		if (mes > 0 && mes <= 12) {
 			this.mes = mes;
 		} else
-			System.out.println("Mês Inválido");
+			System.out.println("Mes Invalido");
 	}
 
 	public int getAno() {
@@ -41,7 +41,7 @@ public class Data {
 		if (ano > 0) {
 			this.ano = ano;
 		} else
-			System.out.println("Ano Inválido");
+			System.out.println("Ano Invalido");
 	}
 
 	@Override
