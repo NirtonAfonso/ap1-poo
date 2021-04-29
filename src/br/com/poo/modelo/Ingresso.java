@@ -12,7 +12,7 @@ public class Ingresso {
 	public void setContIngressos(int contIngressos) {
 		this.contIngressos = contIngressos;
 	}
-	// total de ingresso é igual a capacidade, a cada ingresso comprado menos um terá no estoque
+	// total de ingresso e igual a capacidade, a cada ingresso comprado menos um tera no estoque
 	public void ingressoComprado(int quantidade) {
 		contIngressos-= quantidade;
 	}
@@ -34,7 +34,7 @@ public class Ingresso {
 		ingresso.append("R$ ");
 		ingresso.append(getValor());
 		ingresso.append("\t");
-		ingresso.append("Quantidade á venda: ");
+		ingresso.append("Quantidade a venda: ");
 		ingresso.append(getContIngressos());
 	
 		return ingresso.toString();
