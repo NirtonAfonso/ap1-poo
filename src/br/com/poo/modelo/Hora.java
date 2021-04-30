@@ -1,39 +1,41 @@
 package br.com.poo.modelo;
 
 public class Hora {
-	private int hora;
-	private int minuto;
 
-	public Hora(int hora, int minuto) {
-		setHora(hora);
-		setMinuto(minuto);
-	}
+    private int hora;
+    private int minuto;
 
-	public int getHora() {
-		return hora;
-	}
+    public Hora(int hora, int minuto) {
+        setHora(hora);
+        setMinuto(minuto);
+    }
 
-	public void setHora(int hora) {
-		this.hora = hora;
-	}
+    public int getHora() {
+        return hora;
+    }
 
-	public int getMinuto() {
-		return minuto;
-	}
+    public void setHora(int hora) {
+        this.hora = hora;
+    }
 
-	public void setMinuto(int minuto) {
-		this.minuto = minuto;
-	}
+    public int getMinuto() {
+        return minuto;
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder hora = new StringBuilder();
-		hora.append("as ");
-		hora.append(getHora());
-		hora.append(":");
-		hora.append(getMinuto());
-		hora.append("H");
-		return hora.toString();
-	}
+    public void setMinuto(int minuto) {
+        this.minuto = minuto;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder hora = new StringBuilder();
+        hora.append("as ");
+        hora.append("As ");
+        hora.append(getHora());
+        hora.append(":");
+        hora.append(getMinuto());
+        hora.append("H");
+        return hora.toString();
+    }
 
 }
