@@ -1,11 +1,7 @@
 package br.com.poo.modelo;
 
-import br.com.poo.modelo.Data;
-import br.com.poo.modelo.Hora;
-import br.com.poo.modelo.Local;
-import br.com.poo.modelo.Ingresso;
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Evento {
 
@@ -15,6 +11,7 @@ public class Evento {
     private Local local;
     private String artista;
     private Ingresso ingresso;
+    JFrame frame = new JFrame();
 
     // construtor
     public Evento(String nome, Data data, Hora hora, String artista, Local local) {
@@ -24,17 +21,27 @@ public class Evento {
         setArtista(artista);
         setLocal(local);
     }
+    
+    public Evento (String nome, Ingresso ingresso){
+        setNome(nome);
+    }
 
     // metodo que testa a quantidade de ingressos com a capacidade para saber se
     // ainda tem lugar disponivel
     public double ComprarIngresso(int n) {
         if (ingresso.getContIngressos() > 0) {
-            ingresso.ingressoComprado(n);
-            System.out.println("Ingresso Comprado!");
-            return ingresso.getValor() * n; // "n" e o numero de ingressos que o cliente quer, o metodo retorna o valor
-
+            if (n <= ingresso.getContIngressos()) {
+                ingresso.ingressoComprado(n);
+                JOptionPane.showMessageDialog(frame, "Ingresso Comprado!", "Confirm", JOptionPane.INFORMATION_MESSAGE);
+                //System.out.println("Ingresso Comprado!");
+                return ingresso.getValor() * n; // "n" e o numero de ingressos que o cliente quer, o metodo retorna o valor
+            } else {
+                JOptionPane.showMessageDialog(frame, "Quantidade de ingressos solicitados maior so que a disponivel em estoque!", "Erro", JOptionPane.ERROR_MESSAGE);
+               // System.out.println("Quantidade de ingressos solicitados maior so que a disponivel em estoque!");
+            }
         } else {
-            System.out.println("evento " + nome + " lotado");
+            JOptionPane.showMessageDialog(frame, "evento " + nome + " lotado", "Erro", JOptionPane.WARNING_MESSAGE);
+            //System.out.println("evento " + nome + " lotado");
         }
         return 0;
     }
@@ -96,20 +103,25 @@ public class Evento {
     public void setIngresso(double valor) {
         ingresso = new Ingresso(valor, local.getCapacidadePessoas());
     }
+    
+    public void setQuantidadeIngresso(double valor, int quantIngresso){
+        ingresso = new Ingresso(valor, quantIngresso);
+    }
 
     @Override
     public String toString() {
         StringBuilder evento = new StringBuilder();
-        evento.append(getNome());
-        evento.append("\n\t");
+        evento.append("Atracao: ");
         evento.append(getArtista());
-        evento.append("\n");
+        evento.append("\n\n");
+        evento.append("DATA: ");
         evento.append(getData());
-        evento.append("\n\t");
+        evento.append("\n\n");
+        evento.append("Horario: ");
         evento.append(getHora());
-        evento.append("\n");
+        evento.append("\n\n");
         evento.append(getLocal());
-        evento.append("\n");
+        evento.append("\n\n");
         evento.append(getIngresso());
 
         return evento.toString();

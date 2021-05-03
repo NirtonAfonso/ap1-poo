@@ -30,7 +30,7 @@ public class Local {
 		StringBuilder local = new StringBuilder();
 		local.append("Local do evento: ");
 		local.append(getEndereco());
-		local.append("\n");
+		local.append("\n\n");
 		local.append("Lotacao Maxima: ");
 		local.append(getCapacidadePessoas());
 		local.append(" pessoas");

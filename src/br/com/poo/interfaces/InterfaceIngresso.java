@@ -11,6 +11,7 @@ import br.com.poo.modelo.Hora;
 import br.com.poo.modelo.Local;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -22,18 +23,10 @@ public class InterfaceIngresso extends javax.swing.JFrame {
      * Creates new form InterfaceIngresso
      */
     public InterfaceIngresso() {
-        initComponents();
-        /*List<Evento> listaEventos = new ArrayList <Evento>();
-		
-        lblArtista.setText(listaEventos.get(0).getArtista());
-        lblArtistaCanhoto.setText(listaEventos.get(0).getArtista());
-        lblEvento.setText(listaEventos.get(0).getNome());
-        lblData.setText(listaEventos.get(0).getData().toString());
-        lblHora.setText(listaEventos.get(0).getHora().toString());
-        lblLocal.setText(listaEventos.get(0).getLocal().getEndereco());
-        lblValor.setText(listaEventos.get(0).getIngresso().toString());
-        lblValorCanhoto.setText(listaEventos.get(0).getIngresso().toString());*/
         
+        initComponents();
+        ingresso();
+    
     }
 
     /**
@@ -97,9 +90,7 @@ public class InterfaceIngresso extends javax.swing.JFrame {
         lblEvento.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblEvento.setText("Evento");
         getContentPane().add(lblEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 550, -1));
-
-        lblIngresso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/poo/images/Molde Ingresso 3.png"))); // NOI18N
-        getContentPane().add(lblIngresso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, -1));
+        getContentPane().add(lblIngresso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 350));
 
         pack();
         setLocationRelativeTo(null);
@@ -151,4 +142,9 @@ public class InterfaceIngresso extends javax.swing.JFrame {
     private javax.swing.JLabel lblValor;
     private javax.swing.JLabel lblValorCanhoto;
     // End of variables declaration//GEN-END:variables
+
+    private void ingresso() {
+        lblIngresso.setIcon(new ImageIcon("imagens/Molde-Ingresso.png"));
+    }
+
 }

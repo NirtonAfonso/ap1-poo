@@ -29,7 +29,6 @@ public class Hora {
     @Override
     public String toString() {
         StringBuilder hora = new StringBuilder();
-        hora.append("as ");
         hora.append("As ");
         hora.append(getHora());
         hora.append(":");

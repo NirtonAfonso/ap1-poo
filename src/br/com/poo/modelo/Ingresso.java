@@ -9,14 +9,14 @@ public class Ingresso {
         setValor(valor);
         setContIngressos(contIngressos);
     }
+    // total de ingresso e igual a capacidade, a cada ingresso comprado menos um tera no estoque
+
+    public void ingressoComprado(int quantidade) {
+        setContIngressos(contIngressos - quantidade);
+    }
 
     public void setContIngressos(int contIngressos) {
         this.contIngressos = contIngressos;
-    }
-
-    // total de ingresso e igual a capacidade, a cada ingresso comprado menos um tera no estoque
-    public void ingressoComprado(int quantidade) {
-        contIngressos -= quantidade;
     }
 
     public int getContIngressos() {
@@ -35,9 +35,10 @@ public class Ingresso {
     @Override
     public String toString() {
         StringBuilder ingresso = new StringBuilder();
+        ingresso.append("Valor do ingresso: ");
         ingresso.append("R$ ");
         ingresso.append(getValor());
-        ingresso.append("\t");
+        ingresso.append("\n\n");
         ingresso.append("Quantidade a venda: ");
         ingresso.append(getContIngressos());
         //ingresso.append("\t");
