@@ -11,7 +11,10 @@ public class Evento {
     private Local local;
     private String artista;
     private Ingresso ingresso;
+    private int quantComprado = 0;
     JFrame frame = new JFrame();
+
+   
 
     // construtor
     public Evento(String nome, Data data, Hora hora, String artista, Local local) {
@@ -21,10 +24,10 @@ public class Evento {
         setArtista(artista);
         setLocal(local);
     }
-    
-    public Evento (String nome, Ingresso ingresso){
-        setNome(nome);
+
+    public Evento() {
     }
+    
 
     // metodo que testa a quantidade de ingressos com a capacidade para saber se
     // ainda tem lugar disponivel
@@ -33,6 +36,7 @@ public class Evento {
             if (n <= ingresso.getContIngressos()) {
                 ingresso.ingressoComprado(n);
                 JOptionPane.showMessageDialog(frame, "Ingresso Comprado!", "Confirm", JOptionPane.INFORMATION_MESSAGE);
+                setQuantComprado(n);
                 //System.out.println("Ingresso Comprado!");
                 return ingresso.getValor() * n; // "n" e o numero de ingressos que o cliente quer, o metodo retorna o valor
             } else {
@@ -104,9 +108,14 @@ public class Evento {
         ingresso = new Ingresso(valor, local.getCapacidadePessoas());
     }
     
-    public void setQuantidadeIngresso(double valor, int quantIngresso){
-        ingresso = new Ingresso(valor, quantIngresso);
+     public int getQuantComprado() {
+        return quantComprado;
     }
+
+    public void setQuantComprado(int quantComprado) {
+        this.quantComprado = quantComprado;
+    }
+    
 
     @Override
     public String toString() {
