@@ -142,7 +142,6 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(600, 500));
         setName("Balcao"); // NOI18N
         setPreferredSize(new java.awt.Dimension(600, 500));
-        setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         Camadas.setLayout(new java.awt.GridBagLayout());
