@@ -1,20 +1,54 @@
+/**
+ * @author Nirton Afonso de Oliveira Filho
+ * @matricula 201851301411
+ *
+ * @author Ilmar Macedo Alves Junior
+ * @matricula 201851406603
+ *
+ * @docente Dr. Oberdan Rocha Pinheiro
+ *
+ */
 package br.com.poo.modelo;
 
 public class Ingresso {
 
     private double valor;
     private int contIngressos;
+    private int capacidadeMax;
 
-    public Ingresso(double valor, int contIngressos) {
+    /**
+     * Variavel auxiliar para contabilizar a quantidade de ingressos vendidos
+     */
+    private int aux = 0;
+
+    /**
+     * Construtor
+     *
+     * @param valor
+     * @param contIngressos
+     * @param quantVendidos
+     */
+    public Ingresso(double valor, int contIngressos, int quantVendidos) {
         setValor(valor);
         setContIngressos(contIngressos);
+        setCapacidadeMax(contIngressos);
     }
-    // total de ingresso e igual a capacidade, a cada ingresso comprado menos um tera no estoque
 
+    /**
+     * total de ingresso e igual a capacidade, a cada ingresso comprado menos um
+     * tera no estoque
+     *
+     * @param quantidade
+     */
     public void ingressoComprado(int quantidade) {
         setContIngressos(contIngressos - quantidade);
+        setAux(quantidade);
     }
 
+    /**
+     *
+     * @param contIngressos
+     */
     public void setContIngressos(int contIngressos) {
         this.contIngressos = contIngressos;
     }
@@ -28,8 +62,36 @@ public class Ingresso {
         return valor;
     }
 
+    /**
+     *
+     * @param valor
+     */
     public void setValor(double valor) {
         this.valor = valor;
+    }
+
+    public int getCapacidadeMax() {
+        return capacidadeMax;
+    }
+
+    /**
+     *
+     * @param capacidadeMax
+     */
+    public void setCapacidadeMax(int capacidadeMax) {
+        this.capacidadeMax = capacidadeMax;
+    }
+
+    public int getAux() {
+        return aux;
+    }
+
+    /**
+     *
+     * @param aux
+     */
+    public void setAux(int aux) {
+        this.aux = getAux() + aux;
     }
 
     @Override
@@ -41,9 +103,6 @@ public class Ingresso {
         ingresso.append("\n\n");
         ingresso.append("Quantidade a venda: ");
         ingresso.append(getContIngressos());
-        //ingresso.append("\t");
-        //ingresso.append("Quantidade à venda: ");
-        //ingresso.append(getContIngressos());
 
         return ingresso.toString();
     }

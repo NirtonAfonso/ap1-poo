@@ -1,7 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Nirton Afonso de Oliveira Filho
+ * @matricula 201851301411
+ *
+ * @author Ilmar Macedo Alves Junior
+ * @matricula 201851406603
+ *
+ * @docente Dr. Oberdan Rocha Pinheiro
+ *
  */
 package br.com.poo.interfaces;
 
@@ -24,12 +29,11 @@ public class InterfaceIngresso extends javax.swing.JFrame {
      * Creates new form InterfaceIngresso
      */
     public InterfaceIngresso() {
-        
+
         initComponents();
         ingresso();
-    
+
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -149,8 +153,12 @@ public class InterfaceIngresso extends javax.swing.JFrame {
     private void ingresso() {
         lblIngresso.setIcon(new ImageIcon("imagens/Molde-Ingresso.png"));
     }
-    
-    public void imprimirIngresso(Carrinho ingresso){
+
+    /**
+     *
+     * @param ingresso
+     */
+    public void imprimirIngresso(Carrinho ingresso) {
         lblArtista.setText(ingresso.getArtista());
         lblArtistaCanhoto.setText(ingresso.getArtista());
         lblData.setText(ingresso.getData().toString());
@@ -159,7 +167,7 @@ public class InterfaceIngresso extends javax.swing.JFrame {
         lblLocal.setText(ingresso.getLocal());
         lblValor.setText("R$ " + Double.toString(ingresso.getValor()));
         lblValorCanhoto.setText(Double.toString(ingresso.getValor()));
-        
+
     }
 
 }

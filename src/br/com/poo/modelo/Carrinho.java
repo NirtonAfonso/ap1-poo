@@ -1,7 +1,17 @@
+/**
+ * @author Nirton Afonso de Oliveira Filho
+ * @matricula 201851301411
+ *
+ * @author Ilmar Macedo Alves Junior
+ * @matricula 201851406603
+ *
+ * @docente Dr. Oberdan Rocha Pinheiro
+ *
+ */
 package br.com.poo.modelo;
 
-
 public class Carrinho {
+
     private String nomeEvento;
     private String artista;
     private String Local;
@@ -9,16 +19,17 @@ public class Carrinho {
     private int quantidade;
     private Data data;
     private Hora horario;
- 
+
     /**
-     * 
+     * Construtor
+     *
      * @param nomeEvento
      * @param artista
      * @param Local
      * @param valor
      * @param quantidade
      * @param data
-     * @param horario 
+     * @param horario
      */
     public Carrinho(String nomeEvento, String artista, String Local, double valor, int quantidade, Data data, Hora horario) {
         this.nomeEvento = nomeEvento;
@@ -29,13 +40,15 @@ public class Carrinho {
         this.data = data;
         this.horario = horario;
     }
-    
-    
 
     public String getArtista() {
         return artista;
     }
 
+    /**
+     *
+     * @param artista
+     */
     public void setArtista(String artista) {
         this.artista = artista;
     }
@@ -44,6 +57,10 @@ public class Carrinho {
         return Local;
     }
 
+    /**
+     *
+     * @param Local
+     */
     public void setLocal(String Local) {
         this.Local = Local;
     }
@@ -52,6 +69,10 @@ public class Carrinho {
         return data;
     }
 
+    /**
+     *
+     * @param data
+     */
     public void setData(Data data) {
         this.data = data;
     }
@@ -60,6 +81,10 @@ public class Carrinho {
         return horario;
     }
 
+    /**
+     *
+     * @param horario
+     */
     public void setHorario(Hora horario) {
         this.horario = horario;
     }
@@ -68,6 +93,10 @@ public class Carrinho {
         return nomeEvento;
     }
 
+    /**
+     *
+     * @param nomeEvento
+     */
     public void setNomeEvento(String nomeEvento) {
         this.nomeEvento = nomeEvento;
     }
@@ -76,6 +105,10 @@ public class Carrinho {
         return valor;
     }
 
+    /**
+     *
+     * @param valor
+     */
     public void setValor(double valor) {
         this.valor = valor;
     }
@@ -84,13 +117,12 @@ public class Carrinho {
         return quantidade;
     }
 
+    /**
+     *
+     * @param quantidade
+     */
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    
-    
-    
-    
-    }
-    
 
+}

@@ -1,3 +1,13 @@
+/**
+ * @author Nirton Afonso de Oliveira Filho
+ * @matricula 201851301411
+ *
+ * @author Ilmar Macedo Alves Junior
+ * @matricula 201851406603
+ *
+ * @docente Dr. Oberdan Rocha Pinheiro
+ *
+ */
 package br.com.poo.modelo;
 
 import javax.swing.JFrame;
@@ -14,9 +24,15 @@ public class Evento {
     private int quantComprado = 0;
     JFrame frame = new JFrame();
 
-   
-
-    // construtor
+    /**
+     * Construtor
+     *
+     * @param nome
+     * @param data
+     * @param hora
+     * @param artista
+     * @param local
+     */
     public Evento(String nome, Data data, Hora hora, String artista, Local local) {
         setNome(nome);
         setData(data);
@@ -27,42 +43,37 @@ public class Evento {
 
     public Evento() {
     }
-    
 
-    // metodo que testa a quantidade de ingressos com a capacidade para saber se
-    // ainda tem lugar disponivel
+    /**
+     * metodo que testa a quantidade de ingressos com a capacidade para saber se
+     * ainda tem lugar disponivel
+     *
+     * @param n
+     * @return
+     */
     public double ComprarIngresso(int n) {
         if (ingresso.getContIngressos() > 0) {
             if (n <= ingresso.getContIngressos()) {
                 ingresso.ingressoComprado(n);
                 JOptionPane.showMessageDialog(frame, "Ingresso Comprado!", "Confirm", JOptionPane.INFORMATION_MESSAGE);
                 setQuantComprado(n);
-                //System.out.println("Ingresso Comprado!");
                 return ingresso.getValor() * n; // "n" e o numero de ingressos que o cliente quer, o metodo retorna o valor
             } else {
                 JOptionPane.showMessageDialog(frame, "Quantidade de ingressos solicitados maior so que a disponivel em estoque!", "Erro", JOptionPane.ERROR_MESSAGE);
-               // System.out.println("Quantidade de ingressos solicitados maior so que a disponivel em estoque!");
             }
         } else {
             JOptionPane.showMessageDialog(frame, "evento " + nome + " lotado", "Erro", JOptionPane.WARNING_MESSAGE);
-            //System.out.println("evento " + nome + " lotado");
         }
         return 0;
     }
 
-    /* ArrayList<Evento> listaEventos = new ArrayList<Evento>();
-
-    public ArrayList<Evento> getListaEventos() {
-        return listaEventos;
-    }
-
-    public void setLista(ArrayList<Evento> listaEventos) {
-        this.listaEventos = listaEventos;
-    }*/
     public Hora getHora() {
         return hora;
     }
 
+    /**
+     * @param hora
+     */
     public void setHora(Hora hora) {
         this.hora = hora;
     }
@@ -71,6 +82,9 @@ public class Evento {
         return nome;
     }
 
+    /**
+     * @param nome
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -79,6 +93,9 @@ public class Evento {
         return data;
     }
 
+    /**
+     * @param data
+     */
     public void setData(Data data) {
         this.data = data;
     }
@@ -87,6 +104,9 @@ public class Evento {
         return local;
     }
 
+    /**
+     * @param local
+     */
     public void setLocal(Local local) {
         this.local = local;
     }
@@ -95,6 +115,9 @@ public class Evento {
         return artista;
     }
 
+    /**
+     * @param artista
+     */
     public void setArtista(String artista) {
         this.artista = artista;
     }
@@ -102,20 +125,27 @@ public class Evento {
     public Ingresso getIngresso() {
         return ingresso;
     }
-    //o ingresso recebe o valor e a capacidade, a quantidade de ingressos ser� de acordo � capacidade do evento.
 
+    /**
+     * o ingresso recebe o valor e a capacidade, a quantidade de ingressos sera
+     * de acordo a capacidade do evento
+     *
+     * @param valor
+     */
     public void setIngresso(double valor) {
-        ingresso = new Ingresso(valor, local.getCapacidadePessoas());
+        ingresso = new Ingresso(valor, local.getCapacidadePessoas(), getQuantComprado());
     }
-    
-     public int getQuantComprado() {
+
+    public int getQuantComprado() {
         return quantComprado;
     }
 
+    /**
+     * @param quantComprado
+     */
     public void setQuantComprado(int quantComprado) {
         this.quantComprado = quantComprado;
     }
-    
 
     @Override
     public String toString() {

@@ -1,7 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Nirton Afonso de Oliveira Filho
+ * @matricula 201851301411
+ *
+ * @author Ilmar Macedo Alves Junior
+ * @matricula 201851406603
+ *
+ * @docente Dr. Oberdan Rocha Pinheiro
+ *
  */
 package br.com.poo.interfaces;
 
@@ -14,22 +19,14 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.DefaultRowSorter;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Nirton Afonso
- * @author Ilmar Macedo
- */
 public class BalcaoIngresso extends javax.swing.JFrame {
 
     /**
      * Creates new form BalcaoIngresso
      */
     public String nome;
-    // public String nomeCarrinho;
-    // public double valorCarrinho;
     public int quantComprado;
     public int dia;
     public int mes;
@@ -120,7 +117,7 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         btnVoltar6 = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
         jMainMenu = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        btnPromotor = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         ImgMenu2 = new javax.swing.JLabel();
         jPromotorMenu = new javax.swing.JPanel();
@@ -601,14 +598,14 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         jMainMenu.setPreferredSize(new java.awt.Dimension(620, 522));
         jMainMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton3.setText("PROMOTOR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnPromotor.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnPromotor.setText("PROMOTOR");
+        btnPromotor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnPromotorActionPerformed(evt);
             }
         });
-        jMainMenu.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 210, 170));
+        jMainMenu.add(btnPromotor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 210, 170));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton4.setText("CLIENTE");
@@ -829,7 +826,7 @@ public class BalcaoIngresso extends javax.swing.JFrame {
 
         lblGuiche2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblGuiche2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblGuiche2.setText("GUICHE");
+        lblGuiche2.setText("MODIFICADOR");
 
         lblAlterarArtista.setText("Artista");
 
@@ -858,14 +855,6 @@ public class BalcaoIngresso extends javax.swing.JFrame {
             jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jGuicheAlterarLayout.createSequentialGroup()
                 .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jGuicheAlterarLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(lblEventos2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jGuicheAlterarLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnVoltar3)
-                        .addGap(141, 141, 141)
-                        .addComponent(lblGuiche2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jGuicheAlterarLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -912,7 +901,18 @@ public class BalcaoIngresso extends javax.swing.JFrame {
                                         .addComponent(txtAlterarAno, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jGuicheAlterarLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 258, Short.MAX_VALUE)
-                                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jGuicheAlterarLayout.createSequentialGroup()
+                        .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jGuicheAlterarLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(lblEventos2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jGuicheAlterarLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnVoltar3)
+                                .addGap(104, 104, 104)
+                                .addComponent(lblGuiche2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         jGuicheAlterarLayout.setVerticalGroup(
@@ -983,51 +983,72 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Botao responsavel pela acao de abrir a interface de adicinar um evento
+     */
     private void btnAddIngressosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddIngressosActionPerformed
-
+        // BOTAO PARA ABRIR INTERFACE DE ADICIONAR EVENTO
         jMenu.setVisible(false);
         jAdicionar.setVisible(true);
         jPromotorMenu.setVisible(false);
     }//GEN-LAST:event_btnAddIngressosActionPerformed
 
-
+    /**
+     * Botao responsavel pela acao de abrir a interface de remover um evento
+     */
     private void bntRemoverIngressoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRemoverIngressoActionPerformed
-        // Botao para remover um Evento
+        // BOTAO PARA ABRIR INTERFACE DE REMOVER EVENTO
         jPromotorMenu.setVisible(false);
         jRemoverEvento.setVisible(true);
 
     }//GEN-LAST:event_bntRemoverIngressoActionPerformed
 
-
+    /**
+     * Botao responsavel para abrir a interface de Comprar Ingresso
+     */
     private void btnComprarIngressoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarIngressoActionPerformed
-        // TODO add your handling code here:
+        // BOTAO PARA ABRIR INTERFACE COMPRAR INGRESSO
         jMenu.setVisible(false);
         jGuiche.setVisible(true);
     }//GEN-LAST:event_btnComprarIngressoActionPerformed
 
-
+    /**
+     * Botao responsavel para abrir a interface do Carrinho de Compras
+     */
     private void btnFinalizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarCompraActionPerformed
-        // TODO add your handling code here:
+        // BOTAO PARA ABRIR INTERFACE CARRINHO DE COMPRAS
 
         jCarrinhoDeCompras.setVisible(true);
         jMenu.setVisible(false);
         lblTotalConta.setText("R$ " + totalCompra);
     }//GEN-LAST:event_btnFinalizarCompraActionPerformed
 
-
+    /**
+     * Botao responsavel por voltar ao Menu do Cliente
+     */
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        // TODO add your handling code here:
+        // BOTAO VOLTAR PARA MENU CLIENTE
         txtInfoEvento.setText("");
         jMenu.setVisible(true);
         jGuiche.setVisible(false);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-
+    /**
+     * Botao responsavel para finalizar a compra do Ingresso
+     */
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
-        // TODO add your handling code here:
+        // BOTAO PARA FINALIZAR COMPRA
 
         AddInfoCarrinho();
 
+        /**
+         * Condicao onde verifica se a quantidade de ingressos e maior do que 0
+         * logo em seguida outra condicao verificando se a quantidade comprada e
+         * menor ou igual a quantidade de ingressos disponiveis
+         *
+         * Faz um clone do evento comprado para uma nova lista do carrinho de
+         * compras
+         */
         if (listaEventos.get(selecionado).getIngresso().getContIngressos() > 0) {
             if (quantComprado <= listaEventos.get(selecionado).getIngresso().getContIngressos()) {
                 Carrinho compras = new Carrinho(nome, artista, local, valor, quantComprado,
@@ -1043,6 +1064,9 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) jTableList.getModel();
         modelo.setNumRows(0);
 
+        /**
+         * Acao para mostrar na tabela os eventos comprados
+         */
         for (Carrinho carrinho : listaCarrinho) {
             modelo.addRow(new Object[]{
                 carrinho.getNomeEvento(),
@@ -1050,14 +1074,16 @@ public class BalcaoIngresso extends javax.swing.JFrame {
                 carrinho.getQuantidade()
             });
         }
-        
+
         txtQuantidade.setText("");
 
     }//GEN-LAST:event_btnComprarActionPerformed
 
-
+    /**
+     * Botao responsavel pela acao de adicinar um evento
+     */
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-
+        //BOTAO PARA ADICIONAR UM EVENTO NA LISTA
         pegarInformacoes();
 
         listaEventos.add(new Evento(nome,
@@ -1081,39 +1107,56 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         txtInfoEvento.setText(listaEventos.get(selecionado).toString());
 
     }//GEN-LAST:event_lstEventosMouseClicked
-
+    /**
+     * Botao responsavel para voltar ao Menu do Promotor
+     */
     private void btnVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar2ActionPerformed
-        // TODO add your handling code here:
+        // BOTAO PARA VOLTAR
         jPromotorMenu.setVisible(true);
         jAdicionar.setVisible(false);
     }//GEN-LAST:event_btnVoltar2ActionPerformed
 
+    /**
+     * Acao do botao fazendo voltar para o Menu iniciar
+     */
     private void btnVoltar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar4ActionPerformed
-        // TODO add your handling code here:
+        // BOTAO VOLTAR PARA MENU PRINCIPAL
         jMenu.setVisible(false);
         jMainMenu.setVisible(true);
     }//GEN-LAST:event_btnVoltar4ActionPerformed
 
+    /**
+     * Acao do botao fazendo voltar para o Menu iniciar
+     */
     private void btnVoltar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar5ActionPerformed
-        // TODO add your handling code here:
+        // BOTAO SAIR DO MENU PROMOTOR
         jMainMenu.setVisible(true);
         jPromotorMenu.setVisible(false);
     }//GEN-LAST:event_btnVoltar5ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+    /**
+     * Acao do botao Promotor, fazendo ir para interface do Promotor
+     */
+    private void btnPromotorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromotorActionPerformed
+        // BOTAO PROMOTOR
         jMainMenu.setVisible(false);
         jPromotorMenu.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnPromotorActionPerformed
 
+    /**
+     * Botao responsavel pela acao de abrir o Menu do Cliente
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        // BOTAO CLIENTE
         jMainMenu.setVisible(false);
         jMenu.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    /**
+     * Botao responsavel por voltar para o MENU do Cliente
+     */
     private void btnVoltar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar6ActionPerformed
-        // TODO add your handling code here:
+        // BOTAO VOLTAR PARA MENU CLIENTE
         jCarrinhoDeCompras.setVisible(false);
         jMenu.setVisible(true);
     }//GEN-LAST:event_btnVoltar6ActionPerformed
@@ -1140,8 +1183,11 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         txtInfoEvento1.setText(listaEventos.get(selecionado).toString());
     }//GEN-LAST:event_lstEventos1MouseClicked
 
+    /**
+     * Botao responsavel para concluir a alteracao no evento escolhido
+     */
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // ACAO DO BOTAO PARA ALTERAR OS EVENTOS
+        //BOTAO PARA CONFIRMAR A ALTERACAO DO EVENTO
 
         selecionado = lstAlterarEventos.getSelectedIndex();
         AlterarInformacoes(selecionado);
@@ -1150,8 +1196,11 @@ public class BalcaoIngresso extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAlterarActionPerformed
 
+    /**
+     * Acao do botao fazendo voltar para o Menu do Promotor
+     */
     private void btnVoltar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar3ActionPerformed
-        // TODO add your handling code here:
+        // BOTAO VOLTAR PARA JANELA DO PROMOTOR
         jGuicheAlterar.setVisible(false);
         jPromotorMenu.setVisible(true);
     }//GEN-LAST:event_btnVoltar3ActionPerformed
@@ -1166,33 +1215,41 @@ public class BalcaoIngresso extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lstAlterarEventosMouseClicked
 
+    /**
+     * Botao responsavel pela acao de abrir a interface de editar um evento
+     */
     private void btnEditarIngressoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarIngressoActionPerformed
-        // TODO add your handling code here:
+        // BOTAO EDITAR EVENTO
         jGuicheAlterar.setVisible(true);
         jPromotorMenu.setVisible(false);
     }//GEN-LAST:event_btnEditarIngressoActionPerformed
 
+    /**
+     * Botao responsavel para Imprimir (abrir uma nova janela) do Ingresso
+     * escolhido
+     */
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        // TODO add your handling code here:
-        if(ingresso == null){
+        // BOTAO PARA IMPRIMIR O INGRESSO
+
+        if (ingresso == null) {
             ingresso = new InterfaceIngresso();
             ingresso.setLocationRelativeTo(null);
             ingresso.setVisible(true);
             ingresso.setResizable(false);
-        } else{
+        } else {
             ingresso.setLocationRelativeTo(null);
             ingresso.setVisible(true);
             ingresso.setResizable(false);
         }
-        
+
         ingresso.imprimirIngresso(listaCarrinho.get(selecionadoCarrinho));
-        
+
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
         // TODO add your handling code here:
         selecionadoCarrinho = jTableList.getSelectedRow();
-        
+
     }//GEN-LAST:event_jTableListMouseClicked
 
     /**
@@ -1246,6 +1303,7 @@ public class BalcaoIngresso extends javax.swing.JFrame {
     private javax.swing.JButton btnEditarIngresso;
     private javax.swing.JButton btnFinalizarCompra;
     private javax.swing.JButton btnImprimir;
+    private javax.swing.JButton btnPromotor;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JButton btnVoltar1;
     private javax.swing.JButton btnVoltar2;
@@ -1254,7 +1312,6 @@ public class BalcaoIngresso extends javax.swing.JFrame {
     private javax.swing.JButton btnVoltar5;
     private javax.swing.JButton btnVoltar6;
     private javax.swing.JPanel jAdicionar;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jCarrinhoDeCompras;
     private javax.swing.JPanel jGuiche;
@@ -1330,6 +1387,10 @@ public class BalcaoIngresso extends javax.swing.JFrame {
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metodo que deixa todos os frames(layout) escondidos deixando apenas o
+     * menu iniciar
+     */
     private void menu() {
 
         jGuiche.setVisible(false);
@@ -1343,6 +1404,9 @@ public class BalcaoIngresso extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Metodo onde adiciona imagens de fundo no Layout
+     */
     private void perfumaria() {
         ImgMenu.setIcon(new ImageIcon("imagens/Balcao-de-Ingresso.png"));
         ImgMenu1.setIcon(new ImageIcon("imagens/Balcao-de-Ingresso.png"));
@@ -1350,6 +1414,10 @@ public class BalcaoIngresso extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Metodo para receber as informacoes fornecidas pelo usuario no momento de
+     * criar um novo evento
+     */
     private void pegarInformacoes() {
         this.nome = txtNomeEvento.getText();
         this.dia = Integer.parseInt(txtDia.getText());
@@ -1363,6 +1431,10 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         this.valor = Double.parseDouble(txtValor.getText());
     }
 
+    /**
+     * Metodo onde recebe as informacoes do evento comprado para ser adicionado
+     * ao carrinho de compras
+     */
     private void AddInfoCarrinho() {
         nome = listaEventos.get(selecionado).getNome();
         dia = listaEventos.get(selecionado).getData().getDia();
@@ -1376,6 +1448,12 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         quantComprado = Integer.parseInt(txtQuantidade.getText());
     }
 
+    /**
+     * Metodo que recebe as informacoes modificadas dos eventos fazendo sua
+     * alteracao
+     *
+     * @param selecionado
+     */
     private void AlterarInformacoes(int selecionado) {
 
         listaEventos.get(selecionado).setNome(txtAlterarNomeEvento.getText());
@@ -1388,8 +1466,20 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         listaEventos.get(selecionado).getLocal().setEndereco(txtAlterarLocalEvento.getText());
         listaEventos.get(selecionado).getLocal().setCapacidadePessoas(Integer.parseInt(txtAlterarCapMaxima.getText()));
         listaEventos.get(selecionado).getIngresso().setValor(Double.parseDouble(txtAlterarValor.getText()));
+        listaEventos.get(selecionado).getIngresso().setCapacidadeMax(Integer.parseInt(txtAlterarCapMaxima.getText()));
+        if (listaEventos.get(selecionado).getIngresso().getContIngressos() == 0
+                && listaEventos.get(selecionado).getIngresso().getCapacidadeMax() >= listaEventos.get(selecionado).getIngresso().getAux()) {
+
+            listaEventos.get(selecionado).getIngresso().setContIngressos(listaEventos.get(selecionado).getIngresso().getCapacidadeMax()
+                    - listaEventos.get(selecionado).getIngresso().getAux());
+        }
     }
 
+    /**
+     * Metodo onde mostra as informacoes do evento que vai querer editar
+     *
+     * @param selecionado
+     */
     private void MostrarInformacoes(int selecionado) {
         txtAlterarAno.setText(Integer.toString(listaEventos.get(selecionado).getData().getAno()));
         txtAlterarArtista.setText((listaEventos.get(selecionado).getArtista()));
@@ -1403,6 +1493,9 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         txtAlterarValor.setText(Double.toString(listaEventos.get(selecionado).getIngresso().getValor()));
     }
 
+    /**
+     * Metodo para limpar os campos que recebem as informacoes dos eventos
+     */
     private void limparCampos() {
         txtNomeEvento.setText("");
         txtDia.setText("");
@@ -1418,6 +1511,9 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         txtQuantidade.setText("");
     }
 
+    /**
+     * Metodo para mostrar nos layout os eventos
+     */
     private void mostrarEvento() {
         lista.removeAllElements();
         for (Evento evento : listaEventos) {

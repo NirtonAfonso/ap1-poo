@@ -1,3 +1,13 @@
+/**
+ * @author Nirton Afonso de Oliveira Filho
+ * @matricula 201851301411
+ *
+ * @author Ilmar Macedo Alves Junior
+ * @matricula 201851406603
+ *
+ * @docente Dr. Oberdan Rocha Pinheiro
+ *
+ */
 package br.com.poo.modelo;
 
 public class Hora {
@@ -5,6 +15,12 @@ public class Hora {
     private int hora;
     private int minuto;
 
+    /**
+     * Construtor
+     *
+     * @param hora
+     * @param minuto
+     */
     public Hora(int hora, int minuto) {
         setHora(hora);
         setMinuto(minuto);
@@ -14,6 +30,9 @@ public class Hora {
         return hora;
     }
 
+    /**
+     * @param hora
+     */
     public void setHora(int hora) {
         this.hora = hora;
     }
@@ -22,6 +41,9 @@ public class Hora {
         return minuto;
     }
 
+    /**
+     * @param minuto
+     */
     public void setMinuto(int minuto) {
         this.minuto = minuto;
     }
