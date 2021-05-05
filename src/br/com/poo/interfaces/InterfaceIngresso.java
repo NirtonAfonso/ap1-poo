@@ -11,18 +11,8 @@
 package br.com.poo.interfaces;
 
 import br.com.poo.modelo.Carrinho;
-import br.com.poo.modelo.Data;
-import br.com.poo.modelo.Evento;
-import br.com.poo.modelo.Hora;
-import br.com.poo.modelo.Local;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author nirto
- */
 public class InterfaceIngresso extends javax.swing.JFrame {
 
     /**

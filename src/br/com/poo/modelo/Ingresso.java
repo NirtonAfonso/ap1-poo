@@ -87,7 +87,7 @@ public class Ingresso {
     }
 
     /**
-     *
+     *Variavel para auxiliar a contagem de ingressos vendidos no total
      * @param aux
      */
     public void setAux(int aux) {

@@ -37,7 +37,6 @@ public class BalcaoIngresso extends javax.swing.JFrame {
     public String local;
     public int capacidadePessoas;
     public double valor;
-
     public int posicao = 0;
     public int posicao2 = 0;
     public double totalCompra = 0;
@@ -45,6 +44,7 @@ public class BalcaoIngresso extends javax.swing.JFrame {
     public int selecionadoCarrinho = 0;
     public Evento evento;
     private static BalcaoIngresso bi;
+
     public List<Evento> listaEventos = new ArrayList<>();
     public List<Carrinho> listaCarrinho = new ArrayList<>();
     DefaultListModel lista = new DefaultListModel();
@@ -1190,7 +1190,7 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         //BOTAO PARA CONFIRMAR A ALTERACAO DO EVENTO
 
         selecionado = lstAlterarEventos.getSelectedIndex();
-        AlterarInformacoes(selecionado);
+        alterarInformacoes(selecionado);
         mostrarEvento();
 
 
@@ -1210,7 +1210,7 @@ public class BalcaoIngresso extends javax.swing.JFrame {
 
         selecionado = lstAlterarEventos.getSelectedIndex();
 
-        MostrarInformacoes(selecionado);
+        mostrarInformacoes(selecionado);
 
 
     }//GEN-LAST:event_lstAlterarEventosMouseClicked
@@ -1454,7 +1454,7 @@ public class BalcaoIngresso extends javax.swing.JFrame {
      *
      * @param selecionado
      */
-    private void AlterarInformacoes(int selecionado) {
+    private void alterarInformacoes(int selecionado) {
 
         listaEventos.get(selecionado).setNome(txtAlterarNomeEvento.getText());
         listaEventos.get(selecionado).getData().setDia(Integer.parseInt(txtAlterarDia.getText()));
@@ -1480,7 +1480,7 @@ public class BalcaoIngresso extends javax.swing.JFrame {
      *
      * @param selecionado
      */
-    private void MostrarInformacoes(int selecionado) {
+    private void mostrarInformacoes(int selecionado) {
         txtAlterarAno.setText(Integer.toString(listaEventos.get(selecionado).getData().getAno()));
         txtAlterarArtista.setText((listaEventos.get(selecionado).getArtista()));
         txtAlterarCapMaxima.setText(Integer.toString(listaEventos.get(selecionado).getLocal().getCapacidadePessoas()));

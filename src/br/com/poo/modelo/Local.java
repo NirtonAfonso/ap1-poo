@@ -14,7 +14,7 @@ package br.com.poo.modelo;
 public class Local {
 
     private String endereco;
-    private int CapacidadePessoas;
+    private int capacidadePessoas;
 
     /**
      * Construtor
@@ -39,14 +39,14 @@ public class Local {
     }
 
     public int getCapacidadePessoas() {
-        return CapacidadePessoas;
+        return capacidadePessoas;
     }
 
     /**
      * @param capacidadePessoas
      */
     public void setCapacidadePessoas(int capacidadePessoas) {
-        CapacidadePessoas = capacidadePessoas;
+        this.capacidadePessoas = capacidadePessoas;
     }
 
     @Override
