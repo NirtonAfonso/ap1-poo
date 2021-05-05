@@ -166,7 +166,7 @@ public class InterfaceIngresso extends javax.swing.JFrame {
         lblHora.setText(ingresso.getHorario().toString());
         lblLocal.setText(ingresso.getLocal());
         lblValor.setText("R$ " + Double.toString(ingresso.getValor()));
-        lblValorCanhoto.setText(Double.toString(ingresso.getValor()));
+        lblValorCanhoto.setText("R$ " + Double.toString(ingresso.getValor()));
 
     }
 

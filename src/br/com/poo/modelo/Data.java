@@ -37,11 +37,7 @@ public class Data {
      * @param dia
      */
     public void setDia(int dia) {
-        // if (dia > 0 && dia < 32) {
         this.dia = dia;
-        // } else {
-        //   System.out.println("Dia invalido");
-        // }
     }
 
     public int getMes() {
@@ -52,11 +48,7 @@ public class Data {
      * @param mes
      */
     public void setMes(int mes) {
-        //if (mes > 0 && mes <= 12) {
         this.mes = mes;
-        //  } else {
-        //     System.out.println("Mes Invalido");
-        // }
     }
 
     public int getAno() {
@@ -67,11 +59,7 @@ public class Data {
      * @param ano
      */
     public void setAno(int ano) {
-        //if (ano > 0) {
         this.ano = ano;
-        // } else {
-        //   System.out.println("Ano Invalido");
-        // }
     }
 
     @Override
