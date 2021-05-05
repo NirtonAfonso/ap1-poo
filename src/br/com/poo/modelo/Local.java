@@ -1,41 +1,65 @@
+/**
+ * @author Nirton Afonso de Oliveira Filho
+ * @matricula 201851301411
+ *
+ * @author Ilmar Macedo Alves Junior
+ * @matricula 201851406603
+ *
+ * @docente Dr. Oberdan Rocha Pinheiro
+ *
+ */
+
 package br.com.poo.modelo;
 
 public class Local {
-	private String endereco;
-	private int CapacidadePessoas;
 
-	public Local(String endereco, int capacidadePessoas) {
-		setEndereco(endereco);
-		setCapacidadePessoas(capacidadePessoas);
-	}
+    private String endereco;
+    private int CapacidadePessoas;
 
-	public String getEndereco() {
-		return endereco;
-	}
+    /**
+     * Construtor
+     *
+     * @param endereco
+     * @param capacidadePessoas
+     */
+    public Local(String endereco, int capacidadePessoas) {
+        setEndereco(endereco);
+        setCapacidadePessoas(capacidadePessoas);
+    }
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
+    public String getEndereco() {
+        return endereco;
+    }
 
-	public int getCapacidadePessoas() {
-		return CapacidadePessoas;
-	}
+    /**
+     * @param endereco
+     */
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 
-	public void setCapacidadePessoas(int capacidadePessoas) {
-		CapacidadePessoas = capacidadePessoas;
-	}
+    public int getCapacidadePessoas() {
+        return CapacidadePessoas;
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder local = new StringBuilder();
-		local.append("Local do evento: ");
-		local.append(getEndereco());
-		local.append("\n");
-		local.append("Lotação Máxima: ");
-		local.append(getCapacidadePessoas());
-		local.append(" pessoas");
+    /**
+     * @param capacidadePessoas
+     */
+    public void setCapacidadePessoas(int capacidadePessoas) {
+        CapacidadePessoas = capacidadePessoas;
+    }
 
-		return local.toString();
-	}
+    @Override
+    public String toString() {
+        StringBuilder local = new StringBuilder();
+        local.append("Local do evento: ");
+        local.append(getEndereco());
+        local.append("\n\n");
+        local.append("Lotacao Maxima: ");
+        local.append(getCapacidadePessoas());
+        local.append(" pessoas");
+
+        return local.toString();
+    }
 
 }

@@ -1,103 +1,169 @@
+/**
+ * @author Nirton Afonso de Oliveira Filho
+ * @matricula 201851301411
+ *
+ * @author Ilmar Macedo Alves Junior
+ * @matricula 201851406603
+ *
+ * @docente Dr. Oberdan Rocha Pinheiro
+ *
+ */
 package br.com.poo.modelo;
 
-import br.com.poo.modelo.Data;
-import br.com.poo.modelo.Hora;
-import br.com.poo.modelo.Local;
-import br.com.poo.modelo.Ingresso;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Evento {
-	private String nome;
-	private Data data;
-	private Hora hora;
-	private Local local;
-	private String artista;
-	private Ingresso ingresso;
 
-	// construtor
-	public Evento(String nome, Data data, Hora hora, String artista, Local local) {
-		setNome(nome);
-		setData(data);
-		setHora(hora);
-		setArtista(artista);
-		setLocal(local);
-	}
+    private String nome;
+    private Data data;
+    private Hora hora;
+    private Local local;
+    private String artista;
+    private Ingresso ingresso;
+    private int quantComprado = 0;
+    JFrame frame = new JFrame();
 
-	// metodo que testa a quantidade de ingressos com a capacidade para saber se
-	// ainda tem lugar disponível
-	public double ComprarIngresso(int n) {
-		if (local.getCapacidadePessoas() > ingresso.getContIngressos()) {
-			ingresso.ingressoComprado();
-			return ingresso.getValor() * n; // "n" é o numero de ingressos que o cliente quer, o metodo retorna o valor
-											// total da compra
-		} else
-			System.out.println("evento " + nome + " lotado");
-		return 0;
-	}
+    /**
+     * Construtor
+     *
+     * @param nome
+     * @param data
+     * @param hora
+     * @param artista
+     * @param local
+     */
+    public Evento(String nome, Data data, Hora hora, String artista, Local local) {
+        setNome(nome);
+        setData(data);
+        setHora(hora);
+        setArtista(artista);
+        setLocal(local);
+    }
 
-	public Hora getHora() {
-		return hora;
-	}
+    public Evento() {
+    }
 
-	public void setHora(Hora hora) {
-		this.hora = hora;
-	}
+    /**
+     * metodo que testa a quantidade de ingressos com a capacidade para saber se
+     * ainda tem lugar disponivel
+     *
+     * @param n
+     * @return
+     */
+    public double ComprarIngresso(int n) {
+        if (ingresso.getContIngressos() > 0) {
+            if (n <= ingresso.getContIngressos()) {
+                ingresso.ingressoComprado(n);
+                JOptionPane.showMessageDialog(frame, "Ingresso Comprado!", "Confirm", JOptionPane.INFORMATION_MESSAGE);
+                setQuantComprado(n);
+                return ingresso.getValor() * n; // "n" e o numero de ingressos que o cliente quer, o metodo retorna o valor
+            } else {
+                JOptionPane.showMessageDialog(frame, "Quantidade de ingressos solicitados maior so que a disponivel em estoque!", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(frame, "evento " + nome + " lotado", "Erro", JOptionPane.WARNING_MESSAGE);
+        }
+        return 0;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public Hora getHora() {
+        return hora;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    /**
+     * @param hora
+     */
+    public void setHora(Hora hora) {
+        this.hora = hora;
+    }
 
-	public Data getData() {
-		return data;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setData(Data data) {
-		this.data = data;
-	}
+    /**
+     * @param nome
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public Local getLocal() {
-		return local;
-	}
+    public Data getData() {
+        return data;
+    }
 
-	public void setLocal(Local local) {
-		this.local = local;
-	}
+    /**
+     * @param data
+     */
+    public void setData(Data data) {
+        this.data = data;
+    }
 
-	public String getArtista() {
-		return artista;
-	}
+    public Local getLocal() {
+        return local;
+    }
 
-	public void setArtista(String artista) {
-		this.artista = artista;
-	}
+    /**
+     * @param local
+     */
+    public void setLocal(Local local) {
+        this.local = local;
+    }
 
-	public Ingresso getIngresso() {
-		return ingresso;
-	}
+    public String getArtista() {
+        return artista;
+    }
 
-	public void setIngresso(Ingresso ingresso) {
-		this.ingresso = ingresso;
-	}
+    /**
+     * @param artista
+     */
+    public void setArtista(String artista) {
+        this.artista = artista;
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder evento = new StringBuilder();
-		evento.append(getNome());
-		evento.append("\n\t");
-		evento.append(getArtista());
-		evento.append("\n");
-		evento.append(getData());
-		evento.append("\n\t");
-		evento.append(getHora());
-		evento.append("\n");
-		evento.append(getLocal());
-		evento.append("\n");
-		evento.append(getIngresso());
+    public Ingresso getIngresso() {
+        return ingresso;
+    }
 
-		return evento.toString();
-	}
+    /**
+     * o ingresso recebe o valor e a capacidade, a quantidade de ingressos sera
+     * de acordo a capacidade do evento
+     *
+     * @param valor
+     */
+    public void setIngresso(double valor) {
+        ingresso = new Ingresso(valor, local.getCapacidadePessoas(), getQuantComprado());
+    }
+
+    public int getQuantComprado() {
+        return quantComprado;
+    }
+
+    /**
+     * @param quantComprado
+     */
+    public void setQuantComprado(int quantComprado) {
+        this.quantComprado = quantComprado;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder evento = new StringBuilder();
+        evento.append("Atracao: ");
+        evento.append(getArtista());
+        evento.append("\n\n");
+        evento.append("DATA: ");
+        evento.append(getData());
+        evento.append("\n\n");
+        evento.append("Horario: ");
+        evento.append(getHora());
+        evento.append("\n\n");
+        evento.append(getLocal());
+        evento.append("\n\n");
+        evento.append(getIngresso());
+
+        return evento.toString();
+    }
 
 }
