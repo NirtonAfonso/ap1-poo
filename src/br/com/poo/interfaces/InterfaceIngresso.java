@@ -5,6 +5,7 @@
  */
 package br.com.poo.interfaces;
 
+import br.com.poo.modelo.Carrinho;
 import br.com.poo.modelo.Data;
 import br.com.poo.modelo.Evento;
 import br.com.poo.modelo.Hora;
@@ -28,6 +29,7 @@ public class InterfaceIngresso extends javax.swing.JFrame {
         ingresso();
     
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,14 +50,15 @@ public class InterfaceIngresso extends javax.swing.JFrame {
         lblEvento = new javax.swing.JLabel();
         lblIngresso = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblArtistaCanhoto.setFont(new java.awt.Font("Lucida Calligraphy", 1, 24)); // NOI18N
         lblArtistaCanhoto.setForeground(new java.awt.Color(204, 0, 153));
         lblArtistaCanhoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblArtistaCanhoto.setText("Artista");
-        getContentPane().add(lblArtistaCanhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 190, 60));
+        lblArtistaCanhoto.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        getContentPane().add(lblArtistaCanhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 190, 270));
 
         lblArtista.setFont(new java.awt.Font("Lucida Calligraphy", 1, 24)); // NOI18N
         lblArtista.setForeground(new java.awt.Color(98, 78, 108));
@@ -145,6 +148,18 @@ public class InterfaceIngresso extends javax.swing.JFrame {
 
     private void ingresso() {
         lblIngresso.setIcon(new ImageIcon("imagens/Molde-Ingresso.png"));
+    }
+    
+    public void imprimirIngresso(Carrinho ingresso){
+        lblArtista.setText(ingresso.getArtista());
+        lblArtistaCanhoto.setText(ingresso.getArtista());
+        lblData.setText(ingresso.getData().toString());
+        lblEvento.setText(ingresso.getNomeEvento());
+        lblHora.setText(ingresso.getHorario().toString());
+        lblLocal.setText(ingresso.getLocal());
+        lblValor.setText("R$ " + Double.toString(ingresso.getValor()));
+        lblValorCanhoto.setText(Double.toString(ingresso.getValor()));
+        
     }
 
 }

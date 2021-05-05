@@ -28,8 +28,8 @@ public class BalcaoIngresso extends javax.swing.JFrame {
      * Creates new form BalcaoIngresso
      */
     public String nome;
-    public String nomeCarrinho;
-    public double valorCarrinho;
+    // public String nomeCarrinho;
+    // public double valorCarrinho;
     public int quantComprado;
     public int dia;
     public int mes;
@@ -45,11 +45,13 @@ public class BalcaoIngresso extends javax.swing.JFrame {
     public int posicao2 = 0;
     public double totalCompra = 0;
     public int selecionado = 0;
+    public int selecionadoCarrinho = 0;
     public Evento evento;
     private static BalcaoIngresso bi;
     public List<Evento> listaEventos = new ArrayList<>();
     public List<Carrinho> listaCarrinho = new ArrayList<>();
     DefaultListModel lista = new DefaultListModel();
+    InterfaceIngresso ingresso = new InterfaceIngresso();
 
     public BalcaoIngresso() {
 
@@ -116,6 +118,7 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblTotalConta = new javax.swing.JLabel();
         btnVoltar6 = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
         jMainMenu = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -136,6 +139,33 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         txtInfoEvento1 = new javax.swing.JTextArea();
         lblInfoEvento1 = new javax.swing.JLabel();
+        jGuicheAlterar = new javax.swing.JPanel();
+        btnAlterar = new javax.swing.JButton();
+        btnVoltar3 = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        lstAlterarEventos = new javax.swing.JList<>();
+        lblEventos2 = new javax.swing.JLabel();
+        lblGuiche2 = new javax.swing.JLabel();
+        lblAlterarArtista = new javax.swing.JLabel();
+        lblAlterarData = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtAlterarDia = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtAlterarAno = new javax.swing.JTextField();
+        txtAlterarArtista = new javax.swing.JTextField();
+        txtAlterarValor = new javax.swing.JTextField();
+        txtAlterarCapMaxima = new javax.swing.JTextField();
+        lblAlterarCapacidadeMaxima = new javax.swing.JLabel();
+        lblAlterarLocalEvento = new javax.swing.JLabel();
+        lblAlterarValor = new javax.swing.JLabel();
+        txtAlterarMes = new javax.swing.JTextField();
+        lblAlterarHorario = new javax.swing.JLabel();
+        txtAlterarLocalEvento = new javax.swing.JTextField();
+        txtAlterarMinuto = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtAlterarNomeEvento = new javax.swing.JTextField();
+        txtAlterarHora = new javax.swing.JTextField();
+        lblAlterarNomeEvento = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(600, 500));
@@ -479,6 +509,11 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         });
         jTableList.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
         jTableList.getTableHeader().setReorderingAllowed(false);
+        jTableList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableListMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTableList);
         if (jTableList.getColumnModel().getColumnCount() > 0) {
             jTableList.getColumnModel().getColumn(0).setResizable(false);
@@ -499,6 +534,13 @@ public class BalcaoIngresso extends javax.swing.JFrame {
             }
         });
 
+        btnImprimir.setText("Imprimir Ingresso");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jCarrinhoDeComprasLayout = new javax.swing.GroupLayout(jCarrinhoDeCompras);
         jCarrinhoDeCompras.setLayout(jCarrinhoDeComprasLayout);
         jCarrinhoDeComprasLayout.setHorizontalGroup(
@@ -511,28 +553,36 @@ public class BalcaoIngresso extends javax.swing.JFrame {
                         .addGap(109, 109, 109)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jCarrinhoDeComprasLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jCarrinhoDeComprasLayout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTotalConta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jCarrinhoDeComprasLayout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(96, 96, 96))
+                        .addComponent(lblTotalConta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jCarrinhoDeComprasLayout.setVerticalGroup(
             jCarrinhoDeComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jCarrinhoDeComprasLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jCarrinhoDeComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVoltar6)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
                 .addGroup(jCarrinhoDeComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTotalConta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jCarrinhoDeComprasLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jCarrinhoDeComprasLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jCarrinhoDeComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVoltar6)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addGroup(jCarrinhoDeComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTotalConta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(202, Short.MAX_VALUE))
         );
 
@@ -609,6 +659,11 @@ public class BalcaoIngresso extends javax.swing.JFrame {
 
         btnEditarIngresso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnEditarIngresso.setText("EDITAR EVENTO");
+        btnEditarIngresso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarIngressoActionPerformed(evt);
+            }
+        });
         jPromotorMenu.add(btnEditarIngresso, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 150, 40));
 
         btnVoltar5.setText("VOLTAR");
@@ -740,6 +795,188 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         Camadas.add(jRemoverEvento, gridBagConstraints);
 
+        jGuicheAlterar.setAlignmentX(0.0F);
+        jGuicheAlterar.setAlignmentY(0.0F);
+        jGuicheAlterar.setMaximumSize(new java.awt.Dimension(600, 500));
+        jGuicheAlterar.setMinimumSize(new java.awt.Dimension(600, 500));
+        jGuicheAlterar.setPreferredSize(new java.awt.Dimension(620, 522));
+
+        btnAlterar.setText("Alterar Evento");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
+
+        btnVoltar3.setText("VOLTAR");
+        btnVoltar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltar3ActionPerformed(evt);
+            }
+        });
+
+        lstAlterarEventos.setModel(lista);
+        lstAlterarEventos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstAlterarEventosMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(lstAlterarEventos);
+
+        lblEventos2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblEventos2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEventos2.setText("EVENTOS");
+
+        lblGuiche2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblGuiche2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGuiche2.setText("GUICHE");
+
+        lblAlterarArtista.setText("Artista");
+
+        lblAlterarData.setText("Data (DD/MM/AAAA)");
+
+        jLabel11.setText("/");
+        jLabel11.setToolTipText("");
+
+        jLabel12.setText(":");
+
+        lblAlterarCapacidadeMaxima.setText("Capacidade Máxima");
+
+        lblAlterarLocalEvento.setText("Local do Evento");
+
+        lblAlterarValor.setText("Valor R$");
+
+        lblAlterarHorario.setText("Horário");
+
+        jLabel13.setText("/");
+
+        lblAlterarNomeEvento.setText("Nome do Evento");
+
+        javax.swing.GroupLayout jGuicheAlterarLayout = new javax.swing.GroupLayout(jGuicheAlterar);
+        jGuicheAlterar.setLayout(jGuicheAlterarLayout);
+        jGuicheAlterarLayout.setHorizontalGroup(
+            jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jGuicheAlterarLayout.createSequentialGroup()
+                .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jGuicheAlterarLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblEventos2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jGuicheAlterarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnVoltar3)
+                        .addGap(141, 141, 141)
+                        .addComponent(lblGuiche2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jGuicheAlterarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jGuicheAlterarLayout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jGuicheAlterarLayout.createSequentialGroup()
+                                        .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblAlterarLocalEvento)
+                                            .addComponent(lblAlterarArtista)
+                                            .addComponent(lblAlterarNomeEvento))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtAlterarNomeEvento)
+                                            .addComponent(txtAlterarArtista)
+                                            .addComponent(txtAlterarLocalEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jGuicheAlterarLayout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblAlterarHorario)
+                                            .addComponent(lblAlterarData)
+                                            .addComponent(lblAlterarValor)
+                                            .addComponent(lblAlterarCapacidadeMaxima))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jGuicheAlterarLayout.createSequentialGroup()
+                                                .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(txtAlterarHora)
+                                                    .addComponent(txtAlterarDia, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jLabel13))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(txtAlterarMes)
+                                                    .addComponent(txtAlterarMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(txtAlterarValor)
+                                            .addComponent(txtAlterarCapMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtAlterarAno, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jGuicheAlterarLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 258, Short.MAX_VALUE)
+                                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+        jGuicheAlterarLayout.setVerticalGroup(
+            jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jGuicheAlterarLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVoltar3)
+                    .addComponent(lblGuiche2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(lblEventos2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jGuicheAlterarLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(93, Short.MAX_VALUE))
+                    .addGroup(jGuicheAlterarLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAlterarNomeEvento)
+                            .addComponent(txtAlterarNomeEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAlterarArtista)
+                            .addComponent(txtAlterarArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAlterarLocalEvento)
+                            .addComponent(txtAlterarLocalEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAlterarData)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel11)
+                            .addComponent(txtAlterarDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAlterarMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAlterarAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAlterarHorario)
+                            .addComponent(txtAlterarHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAlterarMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAlterarValor)
+                            .addComponent(txtAlterarValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jGuicheAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAlterarCapacidadeMaxima)
+                            .addComponent(txtAlterarCapMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84))))
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        Camadas.add(jGuicheAlterar, gridBagConstraints);
+
         getContentPane().add(Camadas, new java.awt.GridBagConstraints());
 
         pack();
@@ -780,6 +1017,7 @@ public class BalcaoIngresso extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
+        txtInfoEvento.setText("");
         jMenu.setVisible(true);
         jGuiche.setVisible(false);
     }//GEN-LAST:event_btnVoltarActionPerformed
@@ -787,20 +1025,13 @@ public class BalcaoIngresso extends javax.swing.JFrame {
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
         // TODO add your handling code here:
-        // listaCarrinho.add((listaEventos.get(selecionado).getNome()));
-        //   listaCarrinho.get(posicao2).setIngresso(listaEventos.get(selecionado).getIngresso().getValor());
 
-        nomeCarrinho = listaEventos.get(selecionado).getNome();
-        valorCarrinho = listaEventos.get(selecionado).getIngresso().getValor();
-        quantComprado = Integer.parseInt(txtQuantidade.getText());
+        AddInfoCarrinho();
 
         if (listaEventos.get(selecionado).getIngresso().getContIngressos() > 0) {
             if (quantComprado <= listaEventos.get(selecionado).getIngresso().getContIngressos()) {
-                Carrinho compras = new Carrinho();
-
-                compras.setNomeEvento(nomeCarrinho);
-                compras.setValor(valorCarrinho);
-                compras.setQuantidade(quantComprado);
+                Carrinho compras = new Carrinho(nome, artista, local, valor, quantComprado,
+                        new Data(dia, mes, ano), new Hora(hora, minuto));
 
                 listaCarrinho.add(compras);
             }
@@ -819,13 +1050,9 @@ public class BalcaoIngresso extends javax.swing.JFrame {
                 carrinho.getQuantidade()
             });
         }
+        
+        txtQuantidade.setText("");
 
-        /* modelo.addRowSorterListener(new Object[]{
-             listaEventos.get(selecionado).getNome(),
-             listaEventos.get(selecionado).getIngresso().getValor(),
-             listaEventos.get(selecionado).getQuantComprado()
-         });*/
-        //  posicao2++;
     }//GEN-LAST:event_btnComprarActionPerformed
 
 
@@ -913,6 +1140,61 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         txtInfoEvento1.setText(listaEventos.get(selecionado).toString());
     }//GEN-LAST:event_lstEventos1MouseClicked
 
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // ACAO DO BOTAO PARA ALTERAR OS EVENTOS
+
+        selecionado = lstAlterarEventos.getSelectedIndex();
+        AlterarInformacoes(selecionado);
+        mostrarEvento();
+
+
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnVoltar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar3ActionPerformed
+        // TODO add your handling code here:
+        jGuicheAlterar.setVisible(false);
+        jPromotorMenu.setVisible(true);
+    }//GEN-LAST:event_btnVoltar3ActionPerformed
+
+    private void lstAlterarEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstAlterarEventosMouseClicked
+        // TODO add your handling code here:
+
+        selecionado = lstAlterarEventos.getSelectedIndex();
+
+        MostrarInformacoes(selecionado);
+
+
+    }//GEN-LAST:event_lstAlterarEventosMouseClicked
+
+    private void btnEditarIngressoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarIngressoActionPerformed
+        // TODO add your handling code here:
+        jGuicheAlterar.setVisible(true);
+        jPromotorMenu.setVisible(false);
+    }//GEN-LAST:event_btnEditarIngressoActionPerformed
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        // TODO add your handling code here:
+        if(ingresso == null){
+            ingresso = new InterfaceIngresso();
+            ingresso.setLocationRelativeTo(null);
+            ingresso.setVisible(true);
+            ingresso.setResizable(false);
+        } else{
+            ingresso.setLocationRelativeTo(null);
+            ingresso.setVisible(true);
+            ingresso.setResizable(false);
+        }
+        
+        ingresso.imprimirIngresso(listaCarrinho.get(selecionadoCarrinho));
+        
+    }//GEN-LAST:event_btnImprimirActionPerformed
+
+    private void jTableListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseClicked
+        // TODO add your handling code here:
+        selecionadoCarrinho = jTableList.getSelectedRow();
+        
+    }//GEN-LAST:event_jTableListMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -957,14 +1239,17 @@ public class BalcaoIngresso extends javax.swing.JFrame {
     private javax.swing.JButton bntRemoverIngresso;
     private javax.swing.JButton btnAddIngressos;
     private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnComprar;
     private javax.swing.JButton btnComprarIngresso;
     private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnEditarIngresso;
     private javax.swing.JButton btnFinalizarCompra;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JButton btnVoltar1;
     private javax.swing.JButton btnVoltar2;
+    private javax.swing.JButton btnVoltar3;
     private javax.swing.JButton btnVoltar4;
     private javax.swing.JButton btnVoltar5;
     private javax.swing.JButton btnVoltar6;
@@ -973,8 +1258,12 @@ public class BalcaoIngresso extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jCarrinhoDeCompras;
     private javax.swing.JPanel jGuiche;
+    private javax.swing.JPanel jGuicheAlterar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -987,14 +1276,24 @@ public class BalcaoIngresso extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable jTableList;
+    private javax.swing.JLabel lblAlterarArtista;
+    private javax.swing.JLabel lblAlterarCapacidadeMaxima;
+    private javax.swing.JLabel lblAlterarData;
+    private javax.swing.JLabel lblAlterarHorario;
+    private javax.swing.JLabel lblAlterarLocalEvento;
+    private javax.swing.JLabel lblAlterarNomeEvento;
+    private javax.swing.JLabel lblAlterarValor;
     private javax.swing.JLabel lblArtista;
     private javax.swing.JLabel lblCapacidadeMaxima;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblEventos;
     private javax.swing.JLabel lblEventos1;
+    private javax.swing.JLabel lblEventos2;
     private javax.swing.JLabel lblGuiche;
     private javax.swing.JLabel lblGuiche1;
+    private javax.swing.JLabel lblGuiche2;
     private javax.swing.JLabel lblHorario;
     private javax.swing.JLabel lblInfoEvento;
     private javax.swing.JLabel lblInfoEvento1;
@@ -1003,8 +1302,19 @@ public class BalcaoIngresso extends javax.swing.JFrame {
     private javax.swing.JLabel lblQuatidade;
     private javax.swing.JLabel lblTotalConta;
     private javax.swing.JLabel lblValor;
+    private javax.swing.JList<String> lstAlterarEventos;
     private javax.swing.JList<String> lstEventos;
     private javax.swing.JList<String> lstEventos1;
+    private javax.swing.JTextField txtAlterarAno;
+    private javax.swing.JTextField txtAlterarArtista;
+    private javax.swing.JTextField txtAlterarCapMaxima;
+    private javax.swing.JTextField txtAlterarDia;
+    private javax.swing.JTextField txtAlterarHora;
+    private javax.swing.JTextField txtAlterarLocalEvento;
+    private javax.swing.JTextField txtAlterarMes;
+    private javax.swing.JTextField txtAlterarMinuto;
+    private javax.swing.JTextField txtAlterarNomeEvento;
+    private javax.swing.JTextField txtAlterarValor;
     private javax.swing.JTextField txtAno;
     private javax.swing.JTextField txtArtista;
     private javax.swing.JTextField txtCapMaxima;
@@ -1020,7 +1330,6 @@ public class BalcaoIngresso extends javax.swing.JFrame {
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 
-    
     private void menu() {
 
         jGuiche.setVisible(false);
@@ -1030,6 +1339,7 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         jMainMenu.setVisible(true);
         jMenu.setVisible(false);
         jRemoverEvento.setVisible(false);
+        jGuicheAlterar.setVisible(false);
 
     }
 
@@ -1053,6 +1363,46 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         this.valor = Double.parseDouble(txtValor.getText());
     }
 
+    private void AddInfoCarrinho() {
+        nome = listaEventos.get(selecionado).getNome();
+        dia = listaEventos.get(selecionado).getData().getDia();
+        mes = listaEventos.get(selecionado).getData().getMes();
+        ano = listaEventos.get(selecionado).getData().getAno();
+        hora = listaEventos.get(selecionado).getHora().getHora();
+        minuto = listaEventos.get(selecionado).getHora().getMinuto();
+        artista = listaEventos.get(selecionado).getArtista();
+        local = listaEventos.get(selecionado).getLocal().getEndereco();
+        valor = listaEventos.get(selecionado).getIngresso().getValor();
+        quantComprado = Integer.parseInt(txtQuantidade.getText());
+    }
+
+    private void AlterarInformacoes(int selecionado) {
+
+        listaEventos.get(selecionado).setNome(txtAlterarNomeEvento.getText());
+        listaEventos.get(selecionado).getData().setDia(Integer.parseInt(txtAlterarDia.getText()));
+        listaEventos.get(selecionado).getData().setMes(Integer.parseInt(txtAlterarMes.getText()));
+        listaEventos.get(selecionado).getData().setAno(Integer.parseInt(txtAlterarAno.getText()));
+        listaEventos.get(selecionado).getHora().setHora(Integer.parseInt(txtAlterarHora.getText()));
+        listaEventos.get(selecionado).getHora().setHora(Integer.parseInt(txtAlterarMinuto.getText()));
+        listaEventos.get(selecionado).setArtista(txtAlterarArtista.getText());
+        listaEventos.get(selecionado).getLocal().setEndereco(txtAlterarLocalEvento.getText());
+        listaEventos.get(selecionado).getLocal().setCapacidadePessoas(Integer.parseInt(txtAlterarCapMaxima.getText()));
+        listaEventos.get(selecionado).getIngresso().setValor(Double.parseDouble(txtAlterarValor.getText()));
+    }
+
+    private void MostrarInformacoes(int selecionado) {
+        txtAlterarAno.setText(Integer.toString(listaEventos.get(selecionado).getData().getAno()));
+        txtAlterarArtista.setText((listaEventos.get(selecionado).getArtista()));
+        txtAlterarCapMaxima.setText(Integer.toString(listaEventos.get(selecionado).getLocal().getCapacidadePessoas()));
+        txtAlterarDia.setText(Integer.toString(listaEventos.get(selecionado).getData().getDia()));
+        txtAlterarMes.setText(Integer.toString(listaEventos.get(selecionado).getData().getDia()));
+        txtAlterarHora.setText(Integer.toString(listaEventos.get(selecionado).getHora().getHora()));
+        txtAlterarLocalEvento.setText((listaEventos.get(selecionado).getLocal().getEndereco()));
+        txtAlterarMinuto.setText(Integer.toString(listaEventos.get(selecionado).getHora().getMinuto()));
+        txtAlterarNomeEvento.setText((listaEventos.get(selecionado).getNome()));
+        txtAlterarValor.setText(Double.toString(listaEventos.get(selecionado).getIngresso().getValor()));
+    }
+
     private void limparCampos() {
         txtNomeEvento.setText("");
         txtDia.setText("");
@@ -1065,6 +1415,7 @@ public class BalcaoIngresso extends javax.swing.JFrame {
         txtMinuto.setText("");
         txtQuantidade.setText("");
         txtValor.setText("");
+        txtQuantidade.setText("");
     }
 
     private void mostrarEvento() {
